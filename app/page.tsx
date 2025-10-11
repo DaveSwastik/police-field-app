@@ -67,15 +67,22 @@ export default function FieldAppPage() {
     }
   };
 
+  // const handleStartNavigation = () => {
+  //   if (!notification) return;
+  //   const { lat, lng } = notification.coordinates;
+  //   // Creates a Google Maps directions URL
+  //   const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
+  //   // Opens Google Maps in a new tab
+  //   window.open(url, "_blank");
+  // };
   const handleStartNavigation = () => {
     if (!notification) return;
     const { lat, lng } = notification.coordinates;
-    // Creates a Google Maps directions URL
+    // This format is more reliable for opening Google Maps with directions
     const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
-    // Opens Google Maps in a new tab
     window.open(url, "_blank");
   };
-
+  
   const handleAcknowledge = () => {
     setNotification(null); // Clears the notification
   }
