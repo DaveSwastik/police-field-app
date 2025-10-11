@@ -27,9 +27,11 @@ export default function FieldAppPage() {
   useEffect(() => {
     if (!isLoggedIn || !vehicleId) return;
 
-    // Initialize Pusher with client-side keys
+    // Initialize Pusher with client-side keys and the new auth endpoint
     const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY!, {
       cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
+      // --- THIS IS THE NEW, REQUIRED LINE ---
+      authEndpoint: "/api/pusher/auth", 
     });
 
     // Subscribe to the private channel for this specific vehicle
